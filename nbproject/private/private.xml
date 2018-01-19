@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Z:/didenko_ekaterina/e-shop/routes/web.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/home.blade.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/public/vendor/bootstrap/css/bootstrap.min.css</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/app/User.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/app/Http/Controllers/ProductController.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/config/app.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/database/seeds/DatabaseSeeder.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/welcome.blade.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/app/Providers/AppServiceProvider.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/config/laravel-permission.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/app/Http/Controllers/HomeController.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/layouts/app.blade.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/app/Models/Category.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/product.blade.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/public/css/shop-homepage.css</file>
+        </group>
+    </open-files>
+</project-private>
