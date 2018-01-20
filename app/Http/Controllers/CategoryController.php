@@ -13,10 +13,17 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
 
-        $products = Product::whereHas('category', function($category)use($slug){
-            $category->where('slug', '=', $slug);
-        })->paginate(2);
-
+        if($request->price_min && $request->price_max)
+        {
+            $products = Product::whereHas('category', function($category)use($slug){
+                $category->where('slug', '=', $slug);
+            })->whereBetween('price', [$request->price_min,$request->price_max])->sortable()->paginate(2);
+        }else{
+            $products = Product::whereHas('category', function($category)use($slug){
+                $category->where('slug', '=', $slug);
+            })->sortable()->paginate(2);
+        }
+        
         if ($request->ajax()) {
             return view('category', ['categories' => $categories, 'products' => $products])->render();
         }

@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+use Kyslik\ColumnSortable\Sortable;
 
 use App\Models\Order;
 
 class Product extends Model
 {
     use CrudTrait;
+    use Sortable;
     use CrudTrait;
     use Sluggable, SluggableScopeHelpers;
 
@@ -26,6 +28,8 @@ class Product extends Model
     public $timestamps = true;
     //protected $guarded = ['id'];
     protected $fillable = ['title', 'content', 'price', 'image', 'slug', 'count', 'color', 'size', 'weight', 'status', 'category_id'];
+
+    public $sortable = ['title', 'price', 'created_at'];
     //protected $hidden = [];
     //protected $dates = [];
 

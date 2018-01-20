@@ -2421,14 +2421,18 @@ fieldset[disabled] a.btn {
 
 .btn-info {
   color: #fff;
-  background-color: #17a2b8;
-  border-color: #17a2b8;
+  background-color: #017aff;
+  border-color: #017aff;
+}
+
+.btn-info a {
+    color: #fff;
 }
 
 .btn-info:hover {
   color: #fff;
-  background-color: #138496;
-  border-color: #117a8b;
+  background-color: #45a3e6;
+  border-color: #45a3e6;
 }
 
 .btn-info:focus, .btn-info.focus {

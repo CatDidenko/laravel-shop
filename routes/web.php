@@ -30,3 +30,4 @@ Route::get('/callback', 'SocialAuthFacebookController@callback');
 Route::get('/', 'HomeController@index');
 Route::get('/products/{slug}', 'ProductController@getProduct');
 Route::get('/category/{slug}', 'CategoryController@getCategoryProducts');
+Route::post('/category/{slug}', 'CategoryController@getCategoryProducts');
