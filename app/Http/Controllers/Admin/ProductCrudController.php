@@ -84,17 +84,30 @@ class ProductCrudController extends CrudController
                                 'label' => 'Count',
                                 'type' => 'number',
                             ]);
+//        $this->crud->addField([
+//                                'name' => 'color',
+//                                'label' => 'Color',
+//                                'type' => 'text',
+//                            ]);
+//        $this->crud->addField([
+//                                'name' => 'weight',
+//                                'label' => 'Weight',
+//                                'type' => 'number',
+//                                'attributes' => ["step" => "any"],
+//                            ]);
         $this->crud->addField([
-                                'name' => 'color',
-                                'label' => 'Color',
-                                'type' => 'text',
+                                'name' => 'attributes',
+                                'label' => 'Attributes',
+                                'type' => 'table',
+                                'entity_singular' => 'option', // used on the "Add X" button
+                                'columns' => [
+                                    'name' => 'Name',
+                                    'desc' => 'Description'
+                                ],
+                                'max' => 0, // maximum rows allowed in the table
+                                'min' => 0 // minimum rows allowed in the table
                             ]);
-        $this->crud->addField([
-                                'name' => 'weight',
-                                'label' => 'Weight',
-                                'type' => 'number',
-                                'attributes' => ["step" => "any"],
-                            ]);
+
         $this->crud->addField([
                                 'name' => 'status',
                                 'label' => 'Status',

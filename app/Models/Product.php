@@ -7,6 +7,7 @@ use Backpack\CRUD\CrudTrait;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Kyslik\ColumnSortable\Sortable;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 use App\Models\Order;
 
@@ -16,6 +17,7 @@ class Product extends Model
     use Sortable;
     use CrudTrait;
     use Sluggable, SluggableScopeHelpers;
+    use SearchableTrait;
 
      /*
     |--------------------------------------------------------------------------
@@ -27,11 +29,38 @@ class Product extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     //protected $guarded = ['id'];
-    protected $fillable = ['title', 'content', 'price', 'image', 'slug', 'count', 'color', 'size', 'weight', 'status', 'category_id'];
+    protected $fillable = ['title', 'content', 'price', 'image', 'attributes', 'slug', 'count', 'status', 'category_id'];
 
     public $sortable = ['title', 'price', 'created_at'];
     //protected $hidden = [];
     //protected $dates = [];
+
+    protected $casts = [
+        'attributes' => 'array'
+    ];
+
+    /**
+     * Searchable rules.
+     *
+     * @var array
+     */
+    protected $searchable = [
+        /**
+         * Columns and their priority in search results.
+         * Columns with higher values are more important.
+         * Columns with equal values have equal importance.
+         *
+         * @var array
+         */
+        'columns' => [
+            'products.title' => 10,
+            'products.content' => 10,
+            'category.name' => 8,
+        ],
+        'joins' => [
+            'category' => ['category_id','category.id'],
+        ],
+    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -93,11 +122,6 @@ class Product extends Model
         return str_slug($this->title);
     }
 
-//    public function getTitleAttribute($value)
-//    {
-//        return $value. ' - '. $this->pivot->count;
-//    }
-
 
 
 
@@ -106,6 +130,13 @@ class Product extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
+     public function setAttributesAttribute($json)
+    {
+          $this->attributes['attributes'] = json_encode($json);
+
+    }
+
     
     public function setImageAttribute($value)
     {

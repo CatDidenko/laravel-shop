@@ -10,7 +10,11 @@
 
           <div class="list-group">
         @foreach($categories as $category)
+            @if($category->slug == $slug)
+                <a href="{{asset("/category/$category->slug")}}" class="list-group-item active">{{$category->name}}</a>
+            @else
                 <a href="{{asset("/category/$category->slug")}}" class="list-group-item">{{$category->name}}</a>
+            @endif
         @endforeach
           </div>
             <div data-role="header">

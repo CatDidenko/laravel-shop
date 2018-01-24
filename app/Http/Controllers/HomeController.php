@@ -15,10 +15,6 @@ class HomeController extends Controller
      *
      * @return void
      */
-//    public function __construct()
-//    {
-//        $this->middleware('auth');
-//    }
 
     public function index()
     {
@@ -27,4 +23,5 @@ class HomeController extends Controller
 
         return view('welcome', ['categories' => $categories, 'promo' => $promoProducts]);
     }
+    
 }

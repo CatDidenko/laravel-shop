@@ -10,11 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Route::group(['prefix' => config('backpack.base.route_prefix', 'admin'), 'middleware' => ['admin']], function () {
     CRUD::resource('product', 'Admin\ProductCrudController');
     CRUD::resource('category', 'Admin\CategoryCrudController');
@@ -26,8 +21,17 @@ Auth::routes();
 Route::get('/redirect', 'SocialAuthFacebookController@redirect');
 Route::get('/callback', 'SocialAuthFacebookController@callback');
 
-//Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
+
 Route::get('/products/{slug}', 'ProductController@getProduct');
-Route::get('/category/{slug}', 'CategoryController@getCategoryProducts');
+Route::post('/search', 'ProductController@search');
+
+Route::get('/category/{slug}', 'CategoryController@getCategoryProducts')->name('category');
 Route::post('/category/{slug}', 'CategoryController@getCategoryProducts');
+
+Route::resource('cart', 'CartController');
+Route::delete('emptyCart', 'CartController@emptyCart');
+Route::get('/checkout', 'CartController@submitCheckout')->name('checkout');
+Route::post('switchToWishlist/{id}', 'CartController@switchToWishlist');
+
+Route::get('/profile', 'UserProfileController@getProfile')->name('profile');

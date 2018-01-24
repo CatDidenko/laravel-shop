@@ -24,9 +24,9 @@ class CategoryController extends Controller
             })->sortable()->paginate(2);
         }
         
-        if ($request->ajax()) {
-            return view('category', ['categories' => $categories, 'products' => $products])->render();
-        }
-        return view('category', ['categories' => $categories, 'products' => $products]);
+//        if ($request->ajax()) {
+//            return view('category', ['categories' => $categories, 'products' => $products])->render();
+//        }
+        return view('category', ['categories' => $categories, 'products' => $products, 'slug' => $slug]);
     }
 }

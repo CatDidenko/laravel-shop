@@ -1,7 +1,7 @@
 <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; E-Shop 2017</p>
+        <p class="m-0 text-center text-white">Copyright &copy; E-Shop 2018</p>
       </div>
       <!-- /.container -->
     </footer>
@@ -10,6 +10,9 @@
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>-->
+
+    @yield('extra-js')
 
 <!--    <script>
        $(function() {

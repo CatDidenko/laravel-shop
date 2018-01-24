@@ -20,9 +20,10 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->string('slug')->default('');
             $table->integer('count')->nullable();
-            $table->string('color')->nullable();
-            $table->string('size')->nullable();
-            $table->double('weight')->nullable();
+            $table->longText('attributes')->nullable();
+//            $table->string('color')->nullable();
+//            $table->string('size')->nullable();
+//            $table->double('weight')->nullable();
             $table->enum('status', ['PROMO', 'ORDINARY'])->default('ORDINARY');
             $table->integer('category_id')->unsigned()->index();
             $table->timestamps();
