@@ -32,7 +32,7 @@
                             </li> 
                         @endguest
                     </ul>
-            <form class="form-inline my-2 my-lg-0" method="POST" action="{{ action('ProductController@search')}}">
+            <form class="form-inline my-2 my-lg-0" method="POST" action="{{ action('ProductController@search') }}">
                 {!! csrf_field() !!}
                 <input class="form-control mr-sm-2" type="text" name="search" value="" placeholder="Search">
                 <div class="form-group mr-sm-2">

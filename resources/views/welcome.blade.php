@@ -1,20 +1,8 @@
-@extends('app')  
+@extends('app')
+
+@section('title', 'Main')
 
 @section('main-content')
-
-<div class="container">
-
-      <div class="row">
-
-        <div class="col-lg-3">
-
-          <div class="list-group">
-        @foreach($categories as $category)
-                <a href="{{asset("/category/$category->slug")}}" class="list-group-item">{{$category->name}}</a>
-        @endforeach
-          </div>
-        </div>
-<!--         /.col-lg-3 -->
 
         <div class="col-lg-9">
           <div class="row">
@@ -37,16 +25,8 @@
             </div>
     @endforeach
 
-
           </div>
-          <!-- /.row -->
 
         </div>
-        <!-- /.col-lg-9 -->
-
-      </div>
-      <!-- /.row -->
-
-    </div>
 
 @endsection

@@ -1,10 +1,12 @@
 @extends('app')
 
+@section('title')
+    {{ $product->title }}
+@endsection
+
 @section('main-content')
 
-<div id="mainBody">
-	<div class="container">
-	<div class="row">
+	<div class="col-lg-9">
 	<div class="span9">
     <ul class="breadcrumb">
     <li><a href="{{ route('home') }}">Home</a> <span class="divider">/</span></li>
@@ -62,7 +64,6 @@
 	</div>
             @endif
 </div>
-</div> </div>
 </div>
 </div>
 

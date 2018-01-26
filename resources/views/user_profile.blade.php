@@ -1,14 +1,18 @@
 @extends('app')
 
+@section('title', 'User profile')
+
 @section('main-content')
+
 
 <div class="container">
         <!--/col-3-->
-        <div class="col-lg-10">
+        <div class="col-lg-8">
 
             <ul class="nav nav-tabs" id="myTab">
                 <li class="active"><a href="#home" data-toggle="tab">Information</a></li>
                 <li><a href="#orders" data-toggle="tab">Orders</a></li>
+                <li><a href="#edit" data-toggle="tab">Edit user information</a></li>
             </ul>
 
             <div class="tab-content">
@@ -68,6 +72,26 @@
                     </div>
                     <!--/table-resp-->
                     <hr>
+                </div>
+                    <div class="tab-pane" id="edit">
+                    <h2></h2>
+                    <form class="" method="POST" action="">
+                        <div class="form-group">
+                        <label for="name">Username</label>
+                        <input type="text" class="form-control" id="name" value="{{ Auth::user()->name }}" placeholder="Enter username">
+                      </div>
+                        <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="emai1" value="{{ Auth::user()->email }}" placeholder="Enter email">
+                      </div>
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" autocomplete="new-password" placeholder="Password">
+                      </div>
+                        <div class="form-group">
+                    <button type="submit" class="btn btn-info">Update</button>
+                        </div>
+                   </form>
                 </div>
             </div>
             <!--/tab-pane-->

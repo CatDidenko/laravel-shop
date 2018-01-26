@@ -1,39 +1,21 @@
 @extends('app')
 
+@section('title')
+    {{ ucfirst($slug) }}
+@endsection
+
 @section('main-content')
 
-<div class="container">
-
-      <div class="row">
-
-        <div class="col-lg-3">
-
-          <div class="list-group">
-        @foreach($categories as $category)
-            @if($category->slug == $slug)
-                <a href="{{asset("/category/$category->slug")}}" class="list-group-item active">{{$category->name}}</a>
-            @else
-                <a href="{{asset("/category/$category->slug")}}" class="list-group-item">{{$category->name}}</a>
-            @endif
-        @endforeach
-          </div>
-            <div data-role="header">
-                <h4>Price range</h4>
-              </div>
-            <form method="post" action="{{ action('CategoryController@getCategoryProducts', ['slug'=> $category->slug ]) }}">
-                <div data-role="rangeslider">
-                   {!! csrf_field() !!}
-                  <input type="number" name="price_min" id="price-min" value="3" min="0" max="1000">
-                  <input type="number" name="price_max" id="price-max" value="100" min="0" max="1000">
-                  <input type="submit" data-inline="true" value="Search">
-                </div>
-            </form>
-        </div>
-
         <div class="col-lg-9">
-            <button class="btn btn-info" id="price">@sortablelink('price')</button>
-            <button class="btn btn-info" id="title">@sortablelink('title')</button>
-            <button class="btn btn-info" id="created_at">@sortablelink('created_at')</button>
+            <div class="control-group">
+                <span>&#8645;</span>
+                 <select class="custom-select-sm" name="category" onchange="location = this.value; ">
+                     <option selected="selected">Ordinary</option>
+                     <option value=@sortablelink('title') selected="">Title</option>
+                     <option value=@sortablelink('created_at') selected="">Date of create</option>
+                 </select>
+            </div>
+            
             <div class="row">
 
     @foreach($products as $product)
@@ -55,16 +37,9 @@
     @endforeach
 
           </div>
-          <!-- /.row -->
 
           {!! $products->appends(\Request::except('page'))->render() !!}
 
         </div>
-        <!-- /.col-lg-9 -->
-
-      </div>
-      <!-- /.row -->
-
-    </div>
 
 @endsection

@@ -7,10 +7,16 @@
 
   <body>
    @include('layouts/header')
+   <div class="container">
+   <div class="row">
 
-    @section('main-content')
-    
+        @include('layouts/categories')
+      
+        @section('main-content')
+
         @show
+   </div>
+   </div>
 
     @include('layouts/footer')
 

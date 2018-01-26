@@ -2,20 +2,6 @@
 
 @section('main-content')
 
-<div class="container">
-
-      <div class="row">
-
-        <div class="col-lg-3">
-
-          <div class="list-group">
-        @foreach($products as $product)
-                <a href="" class="list-group-item">{{$product->category->name}}</a>
-        @endforeach
-          </div>
-        </div>
-<!--         /.col-lg-3 -->
-
         <div class="col-lg-9">
           <div class="row">
 
@@ -36,18 +22,9 @@
               </div>
             </div>
     @endforeach
-
-
           </div>
           <!-- /.row -->
-
         </div>
         <!-- /.col-lg-9 -->
-
-      </div>
-      <!-- /.row -->
-
-    </div>
-
 @endsection
 

@@ -28,7 +28,6 @@ class ProductController extends Controller
         });
       })->search($request->search)->with('category')->paginate(2);
 
-      //var_dump($products);
       return view('search', ['products' => $products]);
 
     }

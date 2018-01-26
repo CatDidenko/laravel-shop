@@ -1,5 +1,7 @@
 @extends('app')
 
+@section('title', 'Cart')
+
 @section('main-content')
 
     <div class="container">
