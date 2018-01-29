@@ -13,6 +13,14 @@ use App\Http\Requests\ProductRequest;
 
 class ProductCrudController extends CrudController
 {
+
+    public function __construct()
+    {
+        $this->middleware(['role:admin']);
+        
+        parent::__construct();
+    }
+    
     public function setup()
     {
 

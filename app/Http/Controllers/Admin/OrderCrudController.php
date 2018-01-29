@@ -10,8 +10,18 @@ use App\Http\Requests\OrderRequest as UpdateRequest;
 
 class OrderCrudController extends CrudController
 {
+
+    public function __construct()
+    {
+        $this->middleware(['permission:order-list']);
+
+        parent::__construct();
+    }
+    
     public function setup()
     {
+
+
 
         /*
         |--------------------------------------------------------------------------
@@ -155,9 +165,10 @@ class OrderCrudController extends CrudController
     public function update(UpdateRequest $request)
     {
         // your additional operations before save here
-        $redirect_location = parent::updateCrud($request);
+        $this->middleware(['role:admin']);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
     }
+
 }

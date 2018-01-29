@@ -12,6 +12,14 @@ use App\Http\Requests\CategoryRequest;
 
 class CategoryCrudController extends CrudController
 {
+
+    public function __construct()
+    {
+        $this->middleware(['role:admin']);
+        
+        parent::__construct();
+    }
+
     public function setup()
     {
 

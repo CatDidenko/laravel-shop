@@ -8,7 +8,6 @@ use App\Models\Category;
 
 class ProductController extends Controller
 {
-
     public function getProduct($slug)
     {
         $categories = Category::all();
