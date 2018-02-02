@@ -23,10 +23,7 @@ class CategoryController extends Controller
                 $category->where('slug', '=', $slug);
             })->sortable()->paginate(2);
         }
-        
-//        if ($request->ajax()) {
-//            return view('category', ['categories' => $categories, 'products' => $products])->render();
-//        }
+
         return view('category', ['categories' => $categories, 'products' => $products, 'slug' => $slug]);
     }
 }

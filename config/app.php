@@ -174,7 +174,6 @@ return [
         Backpack\PageManager\PageManagerServiceProvider::class,
 
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
 
         Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
 

@@ -1,13 +1,19 @@
  <div class="col-lg-3">
-          <div class="list-group">
+   @if(!(Request::is('cart') || Request::is('profile') || Request::is('wishlist') || Request::is('search')))
+    <div class="list-group">
         @foreach($categories as $category)
             @if(isset($slug) && $category->slug == $slug)
-                <a href="{{asset("/category/$category->slug")}}" class="list-group-item active">{{$category->name}}</a>
+            <a href="{{asset("/category/$category->slug")}}" class="list-group-item active">{{$category->name}}</a>
             @else
                 <a href="{{asset("/category/$category->slug")}}" class="list-group-item">{{$category->name}}</a>
             @endif
-        @endforeach
+            @endforeach
           </div>
+    @endif
+
+    @if(Request::is('category/*'))
+        @include('layouts/price_filter')
+    @endif
 <!--     <div class="price-range">
 		<div class="well text-center">
                     <div class="slider slider-horizontal" style="width: 174px;">

@@ -39,8 +39,8 @@
                 <tbody>
                     @foreach (Cart::content() as $item)
                     <tr>
-                        <td class="table-image"><a href="{{ url('/', [$item->model->slug]) }}"><img src="{{ asset( $item->model->image) }}" alt="product" class="img-responsive cart-image"></a></td>
-                        <td><a href="{{ url('/products', [$item->model->slug]) }}">{{ $item->name }}</a></td>
+                        <td class="table-image"><a href="{{ url('/', [$item->model['slug']]) }}"><img src="{{ asset( $item->model['image']) }}" alt="product" class="img-responsive cart-image"></a></td>
+                        <td><a href="{{ url('/products', [$item->model['slug']]) }}">{{ $item->name }}</a></td>
                         <td>
                             <select class="quantity" data-id="{{ $item->rowId }}">
                                 <option {{ $item->qty == 1 ? 'selected' : '' }}>1</option>
@@ -67,14 +67,6 @@
                     </tr>
 
                     @endforeach
-                    <tr>
-                        <td class="table-image"></td>
-                        <td></td>
-                        <td class="small-caps table-bg" style="text-align: right">Subtotal</td>
-                        <td>${{ Cart::instance('default')->subtotal() }}</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
 
                     <tr class="border-bottom">
                         <td class="table-image"></td>
@@ -87,7 +79,7 @@
 
                 </tbody>
             </table>
-
+        <div>
             <a href="{{ url('/') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
             <a href="{{ route('checkout')}}" class="btn btn-success btn-lg">Proceed to Checkout</a>
 
@@ -97,6 +89,8 @@
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="submit" class="btn btn-danger btn-lg" value="Empty Cart">
                 </form>
+            </div>
+
             </div>
 
         @else

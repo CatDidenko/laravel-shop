@@ -8,6 +8,8 @@ use App\Http\Requests;
 use Cart;
 use Validator;
 use Auth;
+use App\Mail\OrderShipped;
+use Mail;
 
 use App\Models\Product;
 use App\Models\Order;
@@ -85,7 +87,7 @@ class CartController extends Controller
     }
 
     public function submitCheckout()
-    {   
+    {
         \DB::beginTransaction();
 
         try {
@@ -101,15 +103,16 @@ class CartController extends Controller
                     $product->decrement('count', $value);
                 }
 
+                Mail::to(Auth::user()->email)->send(new OrderShipped($order));
+
                 Cart::destroy();
 
                 \DB::commit();
 
                 return redirect('cart')->withSuccessMessage('Your order has been succesful created!');
-                
+
             } catch (\Exception $ex) {
                 \DB::rollback();
-                
                 return redirect('cart')->withErrorMessage('An unexpected error occurred.');
             }
     }

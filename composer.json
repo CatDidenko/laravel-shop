@@ -6,21 +6,19 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "backpack/MenuCRUD": "^1.0",
         "backpack/base": "^0.8.6",
         "backpack/crud": "^3.3",
-        "backpack/pagemanager": "^1.1",
         "backpack/permissionmanager": "^2.1",
         "cviebrock/eloquent-sluggable": "^4.3",
         "fideloper/proxy": "~3.3",
         "gloudemans/shoppingcart": "^2.4",
+        "guzzlehttp/guzzle": "^6.3",
         "kyslik/column-sortable": "^5.5",
         "laravel/framework": "5.5.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
-        "silber/bouncer": "v1.0.0-beta.5",
-        "sofa/eloquence": "^5.5",
-        "nicolaslopezj/searchable": "1.*"
+        "nicolaslopezj/searchable": "1.*",
+        "sofa/eloquence": "^5.5"
     },
     "require-dev": {
         "backpack/generators": "^1.1",

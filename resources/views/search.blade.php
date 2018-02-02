@@ -28,3 +28,4 @@
         <!-- /.col-lg-9 -->
 @endsection
 
+<!--//$categories = $products->get()->pluck('category')->toArray();-->

@@ -10,9 +10,9 @@
             <div class="control-group">
                 <span>&#8645;</span>
                  <select class="custom-select-sm" name="category" onchange="location = this.value; ">
-                     <option selected="selected">Ordinary</option>
-                     <option value=@sortablelink('title') selected="">Title</option>
-                     <option value=@sortablelink('created_at') selected="">Date of create</option>
+                     <option value="" selected="selected">Ordinary</option>
+                     <option value=@sortablelink('title')>Title</option>
+                     <option value=@sortablelink('created_at')>Date of create</option>
                  </select>
             </div>
             
@@ -30,7 +30,13 @@
                   <p class="card-text">{{$product->content}}</p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-primary col-xs-6 col-sm-12">Add to cart</button>
+                     <form action="{{ url('/cart') }}" method="POST" class="side-by-side">
+                                        {!! csrf_field() !!}
+                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                        <input type="hidden" name="title" value="{{ $product->title }}">
+                                        <input type="hidden" name="price" value="{{ $product->price }}">
+                                        <input type="submit" class="btn btn-primary" value="Add to Cart">
+                    </form>
                 </div>
               </div>
             </div>

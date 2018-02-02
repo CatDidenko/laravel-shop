@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
+
 use Closure;
 use Auth;
 class PermissionMiddleware
@@ -17,7 +18,7 @@ class PermissionMiddleware
         if (Auth::guest()) {
             return redirect('login');
         }
-        if (!$request->user()->can($permission)) {
+        if (!$request->user()->hasPermissionTo($permission)) {
            abort(403);
         }
         return $next($request);

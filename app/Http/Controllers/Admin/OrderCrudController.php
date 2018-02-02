@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
+use Auth;
+
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\OrderRequest as StoreRequest;
 use App\Http\Requests\OrderRequest as UpdateRequest;
@@ -13,9 +15,10 @@ class OrderCrudController extends CrudController
 
     public function __construct()
     {
-        $this->middleware(['permission:order-list']);
 
         parent::__construct();
+        
+        $this->middleware(['permission:order-list']);
     }
     
     public function setup()
@@ -43,6 +46,14 @@ class OrderCrudController extends CrudController
         // ------ CRUD FIELDS
         //
         $this->crud->addField([
+                                'name' => 'id',
+                                'label' => 'ID',
+                                'type' => 'text',
+                                'attributes' => ['readonly' => 'readonly'],
+                            ], 'update');
+
+
+         $this->crud->addField([
                                 'name' => 'status',
                                 'label' => 'Status',
                                 'type' => 'enum',
@@ -57,8 +68,9 @@ class OrderCrudController extends CrudController
        $this->crud->addColumn([
                                 'name' => 'id',
                                 'label' => 'ID',
-                                'type' => 'integer'
-                            ]);
+                                'type' => 'integer',
+                                'attributes' => ['readonly' => 'readonly'],
+                            ], 'update');
 
        $this->crud->addColumn([
                                 'label' => 'Username',
@@ -66,16 +78,11 @@ class OrderCrudController extends CrudController
                                 'name' => 'user_id', // the method that defines the relationship in your Model
                                 'entity' => 'user', // the method that defines the relationship in your Model
                                 'attribute' => 'name', // foreign key attribute that is shown to user
-                                'model' => "App\User", // foreign key model
-         ]);
+                                'model' => "App\User", // foreign key model,
+                                'attributes' => ['readonly' => 'readonly'],
+         ], 'update');
 
-       $this->crud->addColumn([
-                                'name' => 'status',
-                                'label' => 'Status',
-                                'type' => 'enum',
-                            ]);
-
-       $this->crud->addColumn([
+        $this->crud->addColumn([
                                 'label' => 'Products',
                                 'type' => 'select_multiple',
                                 'name' => 'products', // the method that defines the relationship in your Model
@@ -83,13 +90,21 @@ class OrderCrudController extends CrudController
                                 'attribute' => 'title', // foreign key attribute that is shown to user
                                 'model' => "App\Models\Product", // foreign key model
                                 'pivot' => true, // on create&update, do you need to add/delete pivot table
-         ]);
+                                'attributes' => ['readonly' => 'readonly'],
+         ], 'update');
 
-        $this->crud->addColumn([
+       $this->crud->addColumn([
                                 'name' => 'count',
                                 'label' => 'Count',
-                                'type' => 'array'
+                                'type' => 'array',
                             ]);
+
+       $this->crud->addColumn([
+                                'name' => 'status',
+                                'label' => 'Status',
+                                'type' => 'enum',
+                            ]);
+
 
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
@@ -109,8 +124,14 @@ class OrderCrudController extends CrudController
         // $this->crud->removeAllButtonsFromStack('line');
 
         // ------ CRUD ACCESS
-         $this->crud->allowAccess(['list', 'update', 'reorder']);
-         $this->crud->denyAccess(['create','delete']);
+//        if(Auth::user()->role !== 'admin')
+//        {
+            $this->crud->allowAccess(['list', 'update', 'reorder']);
+            $this->crud->denyAccess(['create','delete']);
+//        } else {
+//            $this->crud->allowAccess(['list', 'show', 'reorder']);
+//            $this->crud->denyAccess(['create', 'update', 'delete']);
+//        }
 
         // ------ CRUD REORDER
         // $this->crud->enableReorder('label_name', MAX_TREE_LEVEL);
@@ -164,8 +185,8 @@ class OrderCrudController extends CrudController
 
     public function update(UpdateRequest $request)
     {
+        $redirect_location = parent::updateCrud($request);
         // your additional operations before save here
-        $this->middleware(['role:admin']);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;

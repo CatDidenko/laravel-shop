@@ -4,16 +4,22 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Z:/didenko_ekaterina/e-shop/routes/web.php</file>
-            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/product2.blade.php</file>
-            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/layouts/header.blade.php</file>
-            <file>file:/Z:/didenko_ekaterina/e-shop/public/vendor/bootstrap/css/bootstrap.css</file>
-            <file>file:/Z:/didenko_ekaterina/e-shop/vendor/kyslik/column-sortable/src/ColumnSortable/Sortable.php</file>
-            <file>file:/Z:/didenko_ekaterina/e-shop/app/Providers/AppServiceProvider.php</file>
-            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/user_profile.blade.php</file>
-            <file>file:/Z:/didenko_ekaterina/e-shop/app/Http/Controllers/ProductController.php</file>
-            <file>file:/Z:/didenko_ekaterina/e-shop/app/Models/Product.php</file>
             <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/category.blade.php</file>
-            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/welcome.blade.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/config/elfinder.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/layouts/header.blade.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/cart.blade.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/app/Http/Controllers/CategoryController.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/app/Models/Product.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/app/User.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/app/Http/Controllers/ProductController.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/wishlist.blade.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/user_profile.blade.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/config/laravel-permission.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/app/Http/Controllers/HomeController.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/app/Http/Controllers/CartController.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/app/Http/Controllers/Admin/ProductCrudController.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/product2.blade.php</file>
+            <file>file:/Z:/didenko_ekaterina/e-shop/resources/views/search.blade.php</file>
         </group>
     </open-files>
 </project-private>

@@ -14,7 +14,7 @@ Route::group(
 [
     'namespace'  => 'Backpack\Base\app\Http\Controllers',
     'prefix'     => config('backpack.base.route_prefix'),
-    'middleware' => ['web', 'permission:dashboard'],
+    'middleware' => ['web'],
 ],
 function () {
     // if not otherwise configured, setup the auth routes
@@ -38,7 +38,7 @@ function () {
 
     // if not otherwise configured, setup the dashboard routes
     if (config('backpack.base.setup_dashboard_routes')) {
-        Route::get('dashboard', 'AdminController@dashboard')->name('backpack.dashboard');
+        Route::get('dashboard', 'AdminController@dashboard')->name('backpack.dashboard')->middleware(['permission:dashboard']);
         Route::get('/', 'AdminController@redirect')->name('backpack');
     }
 

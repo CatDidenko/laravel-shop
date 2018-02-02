@@ -24,7 +24,8 @@ Route::get('/callback', 'SocialAuthFacebookController@callback');
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/products/{slug}', 'ProductController@getProduct');
-Route::post('/search', 'ProductController@search');
+//Route::post('/search', 'ProductController@search');
+Route::get('/search', 'HomeController@search');
 
 Route::get('/category/{slug}', 'CategoryController@getCategoryProducts')->name('category');
 Route::post('/category/{slug}', 'CategoryController@getCategoryProducts');
@@ -36,6 +37,13 @@ Route::middleware(['permission:cart'])->group(function () {
     Route::post('switchToWishlist/{id}', 'CartController@switchToWishlist');
 });
 
+Route::middleware(['permission:wishlist'])->group(function () {
+    Route::resource('wishlist', 'WishlistController');
+    Route::delete('emptyWishlist', 'WishlistController@emptyWishlist');
+    Route::post('switchToCart/{id}', 'WishlistController@switchToCart');
+});
+
 Route::middleware(['permission:profile'])->group(function () {
     Route::get('/profile', 'UserProfileController@getProfile')->name('profile');
+    
 });

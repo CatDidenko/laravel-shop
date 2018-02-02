@@ -45,7 +45,7 @@
                                 <tr>
                                     <td>{{ $order->id }}</td>
                                        <td>
-                                           <ul>
+                                        <ul>
                                         @foreach($order->products as $product)
                                         <li><a href="{{ url('/products', [$product->slug]) }}">{{ $product->title }}</a></li>
                                         @endforeach

@@ -59,13 +59,27 @@ class Order extends Model
     public function getCountAttribute()
     {
         $counts = [];
-        
+
         foreach($this->products as $product)
         {
             $counts[] = $product->pivot->count;
         }
 
         return $counts;
+
+        //return $count = $product->pivot->count;
+    }
+
+    public function getTotalAttribute()
+    {
+        $prices = [];
+        
+        foreach($this->products as $product)
+        {
+            $prices[] = $product->pivot->count * $product->price;
+        }
+
+        return array_sum($prices);
     }
     /*
     |--------------------------------------------------------------------------

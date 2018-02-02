@@ -10,9 +10,11 @@ class SocialFacebookAccountService
 {
     public function createOrGetUser(ProviderUser $providerUser)
     {
+
         $account = SocialFacebookAccount::whereProvider('facebook')
             ->whereProviderUserId($providerUser->getId())
             ->first();
+
 
         if ($account) {
             return $account->user;
@@ -28,10 +30,12 @@ class SocialFacebookAccountService
             if (!$user) {
 
                 $user = User::create([
-                    'email' => $providerUser->getEmail(),
                     'name' => $providerUser->getName(),
+                    'email' => $providerUser->getEmail(),
                     'password' => md5(rand(1,10000)),
                 ]);
+
+                $user->assignRole('user');
             }
 
             $account->user()->associate($user);

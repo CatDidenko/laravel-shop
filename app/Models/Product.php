@@ -157,7 +157,7 @@ class Product extends Model
         if (starts_with($value, 'data:image'))
         {
             // 0. Make the image
-            $image = \Image::make($value);
+            $image = \Image::make($value)->resize(166,166);
             // 1. Generate a filename.
             $filename = md5($value.time()).'.jpg';
             // 2. Store the image on disk.

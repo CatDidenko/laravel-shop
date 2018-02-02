@@ -16,18 +16,4 @@ class ProductController extends Controller
         
         return view('product2', ['product' => $product, 'categories' => $categories]);
     }
-
-    public function search(Request $request)
-    {
-        $category = $request->category;
-        
-        $products = Product::whereHas('category', function($query) use($category){
-            $query->when($category, function ($query) use ($category){
-            $query->where('name', $category);
-        });
-      })->search($request->search)->with('category')->paginate(2);
-
-      return view('search', ['products' => $products]);
-
-    }
 }

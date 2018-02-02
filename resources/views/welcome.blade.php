@@ -7,7 +7,7 @@
         <div class="col-lg-9">
           <div class="row">
 
-    @foreach($promo as $product)
+    @foreach($products as $product)
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
                 <img class="card-img-top" src="{{ asset("$product->image") }}" alt="">
@@ -24,9 +24,10 @@
               </div>
             </div>
     @endforeach
-
           </div>
-
+            @if(Request::is('search'))
+             {!! $products->appends(request()->query())->links() !!}
+            @endif
         </div>
 
 @endsection

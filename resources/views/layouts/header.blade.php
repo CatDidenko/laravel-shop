@@ -32,22 +32,24 @@
                             </li> 
                         @endguest
                     </ul>
-            <form class="form-inline my-2 my-lg-0" method="POST" action="{{ action('ProductController@search') }}">
-                {!! csrf_field() !!}
+            <form class="form-inline my-2 my-lg-0" method="GET" action="{{ action('HomeController@search') }}">
                 <input class="form-control mr-sm-2" type="text" name="search" value="" placeholder="Search">
                 <div class="form-group mr-sm-2">
                     <select class="custom-select" name="category">
                       <option value="">In all categories</option>
-                      <option value="clothes">Clothes</option>
-                      <option value="toys">Toys</option>
+                      @foreach($categories as $category)
+                      <option value="{{ $category->slug }}">{{ $category->name }}</option>
+                      @endforeach
                     </select>
                   </div>
             <input class="btn btn-info my-2 my-sm-0" type="submit" value="Search">
             </form>
             </div>
+        @can('cart')
         <ul class="nav navbar-nav navbar-right">
             <li class="{{ Request::is('wishlist') ? 'active' : '' }}"><a href="{{ url('/wishlist') }}">Wishlist ({{ Cart::instance('wishlist')->count(false) }})</a></li>
             <li class="{{ Request::is('cart') ? 'active' : '' }}"><a href="{{ url('/cart') }}">Cart ({{ Cart::instance('default')->count(false) }})</a></li>
         </ul>
+        @endcan
       </div>
     </nav>
